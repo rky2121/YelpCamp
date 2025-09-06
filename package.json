@@ -1,0 +1,25 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "Campground listing web application built with Node.js, Express, MongoDB, and EJS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rky2121/YelpCamp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rky2121/YelpCamp/issues"
+  },
+  "homepage": "https://github.com/rky2121/YelpCamp#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0"
+  }
+}
