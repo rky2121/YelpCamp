@@ -6,7 +6,7 @@ const { cloudinary } = require('../cloudinary');
 
 module.exports.index = async(req, res) =>{
     const campgrounds = await Campground.find({});
-    res.render('campgrounds/index', {campgrounds})
+    res.render('campgrounds/index', {campgrounds,mapboxToken: process.env.MAPBOX_TOKEN_CLIENT})
 }
 
 module.exports.renderNewForm = (req,res) =>{
