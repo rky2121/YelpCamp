@@ -1,20 +1,30 @@
-<% layout('layouts/boilerplate') %>
-<h1>Login</h1>
-<form action="/login" method="POST" class="validated-form" novalidate>
-    <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" name="username" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
+<% layout('layouts/authLayout') %>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-white">
+
+        <main class="px-3 flex-fill d-flex justify-content-center align-items-center text-center">
+            <div class="login-content">
+                <div class="flash-container mb-4">
+                    <%- include('../partials/flash') %>
+                </div>
+                <h1 class="mb-4 fw-bold">Welcome Back</h1>
+                <p class="lead mb-5">Login to YelpCamp to share and explore the best campgrounds.</p>
+
+                <form action="/login" method="POST" class="login-form mx-auto validated-form" novalidate
+                    style="max-width: 400px;">
+                    <div class="mb-4 text-start">
+                        <input class="form-control" type="text" id="username" name="username" placeholder="Username"
+                            required>
+                        <div class="invalid-feedback">Please provide a username.</div>
+                    </div>
+                    <div class="mb-4 text-start">
+                        <input class="form-control" type="password" id="password" name="password" placeholder="Password"
+                            required>
+                        <div class="invalid-feedback">Please provide a password.</div>
+                    </div>
+                    <button type="submit" class="btn btn-login">Login</button>
+                </form>
+            </div>
+        </main>
     </div>
- 
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-    <button type="submit" class="btn btn-success">Login</button>
-</form>

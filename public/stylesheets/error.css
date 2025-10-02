@@ -1,0 +1,21 @@
+@import url("/stylesheets/shared.css");
+
+body.error-page {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
+    url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.error-page h1 {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.error-page p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+

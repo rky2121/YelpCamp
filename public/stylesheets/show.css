@@ -1,0 +1,47 @@
+@import url("/stylesheets/shared.css");
+
+body.show-page {
+  min-height: 100vh;
+  background-color: rgb(28, 28, 28);
+}
+
+#show-map {
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  margin-bottom: 1.5rem;
+}
+
+.carousel-item img {
+  border-radius: 12px;
+  object-fit: cover;
+  max-height: 400px;
+}
+
+.show-card {
+  background: rgba(30,30,30,0.95);
+  color: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  margin-bottom: 1.5rem;
+}
+
+.show-card .list-group-item {
+  background: transparent;       
+  color: #eaeaea;                
+  border-color: rgba(255, 255, 255, 0.1); 
+}
+
+.show-card .list-group-item.text-muted {
+  color: #bbbbbb; 
+}
+
+.review-card {
+  background: rgba(40,40,40,0.95);
+  color: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}

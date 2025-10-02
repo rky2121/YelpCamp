@@ -1,0 +1,69 @@
+@import url("/stylesheets/shared.css");
+
+body.edit-page {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.edit-form-container {
+  background: rgba(30,30,30,0.85);
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.edit-form-container .form-control {
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.edit-form-container .form-control:focus {
+  outline: none;
+  border-color: #00a389;
+  box-shadow: 0 0 0 0.2rem rgba(0,163,137,0.25);
+}
+
+.btn-edit {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-weight: 600;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-edit:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.btn-back {
+  background: linear-gradient(135deg, #dfac36, #b8731d);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.45rem 1rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.btn-back:hover {
+  background: linear-gradient(135deg, #b8731d, #9b6618);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  color: #fff;
+}

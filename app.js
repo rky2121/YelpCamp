@@ -70,7 +70,7 @@ app.use('/campgrounds', campgroundRoutes)
 app.use('/campgrounds/:id/reviews', reviewRoutes);
 
 app.get('/',(req, res) =>{
-    res.render('home');
+    res.render('home', { activePage: "home" });
 });
 
 app.all(/(.*)/, (req, res, next) => {
@@ -80,7 +80,11 @@ app.all(/(.*)/, (req, res, next) => {
 app.use((err, req, res, next) => {
     const {statusCode = 500} = err;
     if(!err.message) err.message = 'Oh No, Something Went Wrong!'
-    res.status(statusCode).render('error', {err});
+    res.status(statusCode).render('error', {
+        err,
+        activePage: null,    // so navbar doesn't highlight anything
+        bodyClass: 'error-page' // or just '' if you don’t want styling
+    });
 })
 
 app.listen(3000, ()=> {

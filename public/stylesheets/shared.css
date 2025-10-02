@@ -1,0 +1,132 @@
+.cover-container {
+  max-width: 60vw;
+    margin: 1rem auto; 
+}
+
+.nav-link {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  margin-left: 1rem;
+  border-bottom: 0.25rem solid transparent;
+}
+
+.nav-link:hover {
+  color: white; 
+  border-bottom-color: rgba(255,255,255,0.7);
+}
+
+.nav-link.active {
+  color: white;
+  border-bottom-color: white;
+}
+
+.brand-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.brand-link:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.flash-container {
+  display: flex;
+  justify-content: center; 
+  margin-bottom: 1rem;
+}
+
+.flash-container .alert {
+  display: inline-block; 
+  max-width: 400px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  z-index: 20;
+  opacity: 0.95;
+  text-align: center; 
+}
+
+.flash-container .alert-success {
+  background: linear-gradient(135deg, #00a389, #00c9a7);
+  color: #fff;
+  border: none;
+  font-weight: 500;
+}
+
+.flash-container .alert-danger {
+  background: linear-gradient(135deg, #e63946, #ff4d6d);
+  color: #fff;
+  border: none;
+  font-weight: 500;
+}
+
+.btn-view {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 50px;
+  font-weight: 600;
+  background: #3b82f6;
+  color: #fff !important;
+  text-decoration: none;
+  border: none;
+  transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.btn-view:hover {
+  background: #2563eb;
+  color: #fff !important;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+}
+
+.btn-view:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(59,130,246,0.35);
+}
+
+.btn-danger-pill {
+  border-radius: 50px !important;
+  padding: 0.45rem 1rem;
+  font-weight: 600;
+  transition: all .2s ease;
+  background: linear-gradient(135deg, #e63946, #ff4d6d);
+  color: #fff;
+  border: none;
+}
+
+.btn-danger-pill:hover {
+  background: linear-gradient(135deg, #d62839, #e63946);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  color: #fff;
+}
+
+.btn-success-pill {
+  border-radius: 50px !important;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  transition: all .2s ease;
+  background: linear-gradient(135deg, #00a389, #00c9a7);
+  color: #fff;
+  border: none;
+}
+
+.btn-success-pill:hover {
+  background: linear-gradient(135deg, #009578, #00b898);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  color: #fff;
+}
+
+body {
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+

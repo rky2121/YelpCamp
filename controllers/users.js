@@ -4,7 +4,7 @@ const ExpressError = require('../utils/ExpressError');
 const passport = require('passport');
 
 module.exports.renderRegister = (req, res) => {
-    res.render('users/register');
+    res.render('users/register', { activePage: 'register' });
 }
 
 module.exports.register = async (req, res, next) => {
@@ -24,7 +24,7 @@ module.exports.register = async (req, res, next) => {
 }
 
 module.exports.renderLogin =  (req, res) => {
-    res.render('users/login');
+    res.render('users/login', { activePage: 'login' });
 }
 
 module.exports.login = (req, res) => {
@@ -38,6 +38,6 @@ module.exports.logout = (req, res, next) => {
     req.logout(function(err) {
         if(err) { return next(err); }
         req.flash('success', "Goodbye!");
-        res.redirect('/campgrounds');
+        res.redirect('/');
     });
 }

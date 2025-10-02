@@ -1,0 +1,54 @@
+@import url("/stylesheets/shared.css");
+
+body.auth-page {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80");
+  background-size: cover;
+  background-position: center;
+  text-shadow: 0 0.05rem 0.1rem rgba(0,0,0,0.5);
+  box-shadow: inset 0 0 5rem rgba(0,0,0,0.5);
+}
+
+.flash-container .alert {
+  display: inline-block;
+  max-width: 400px;
+  margin: 0 auto 1rem auto;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  z-index: 20;
+  opacity: 0.95;
+}
+
+.register-form .form-control {
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.register-form .form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+.register-form .btn-register {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-weight: 600;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #007bff, #3399ff); 
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.register-form .btn-register:hover {
+  background: linear-gradient(135deg, #0069d9, #2680e8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}

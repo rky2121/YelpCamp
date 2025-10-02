@@ -1,27 +1,46 @@
-<% layout('layouts/boilerplate') %>
-<h1>Register</h1>
-<form action="/register" method="POST" class="validated-form" novalidate>
-    <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" name="username" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
+<% layout('layouts/authLayout') %>
+    <link rel="stylesheet" href="/stylesheets/register.css">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-white">
+        <!-- Navbar -->
+
+        <!-- Main content -->
+        <main class="px-3 flex-fill d-flex justify-content-center align-items-center text-center">
+            <div class="register-content">
+                <div class="flash-container mb-4">
+                    <%- include('../partials/flash') %>
+                </div>
+
+                <h1 class="mb-4 fw-bold">Join YelpCamp</h1>
+                <p class="lead mb-5">Create your account and start sharing your campgrounds.</p>
+
+                <form action="/register" method="POST" class="register-form mx-auto validated-form" novalidate
+                    style="max-width: 400px;">
+                    <!-- Username -->
+                    <div class="mb-3 text-start">
+                        <input class="form-control" type="text" id="username" name="username" placeholder="Username"
+                            required>
+                        <div class="invalid-feedback">Please provide a username.</div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3 text-start">
+                        <input class="form-control" type="email" id="email" name="email" placeholder="Email" required>
+                        <div class="invalid-feedback">Please provide a valid email address.</div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-4 text-start">
+                        <input class="form-control" type="password" id="password" name="password" placeholder="Password"
+                            required>
+                        <div class="invalid-feedback">Please provide a password.</div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-register">Register</button>
+                </form>
+
+                <p class="mt-4">Already have an account? <a href="/login" class="brand-link">Login</a></p>
+            </div>
+        </main>
     </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>  
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-    <button type="submit" class="btn btn-success">Register</button>
-</form>
-<p>Already have an account? <a href="/login">Login</a></p>

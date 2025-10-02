@@ -1,36 +1,105 @@
 <% layout('layouts/boilerplate') %>
-<div id="map" style="width: 100%; height: 500px;"></div>
-<h1>All Campgrounds</h1>
-<div>
-    <a href="/campgrounds/new">Add Campground</a>
-</div>
-    <%for (let campground of campgrounds) {%>
-        <div class="card" mb-3>
-            <div class="row">
-                <div class="col-md-4">
-                    <%if(campground.images.length) {%>
-                    <img class="img-fluid" alt="" src="<%= campground.images[0].url %>">
-                    <% }else {%>
-                    <img class="img-fluid" alt=""
-                        src="https://res.cloudinary.com/dcbthvnv4/image/upload/v1759000699/YelpCamp/fonagaz0hdjecpohneeu.jpg">
-                    <% } %>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= campground.title %></h5>
-                        <p class="card-text"><%= campground.description %></p>
-                        <p class="card-text">
-                            <small class="text-muted"><%= campground.location %></small>
-                        </p>
-                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">View <%= campground.title %></a>
+    <link rel="stylesheet" href="/stylesheets/campground.css">
+
+    <div class="campgrounds-page full-bleed">
+        <div class="cg-inner">
+
+            <!-- Map -->
+            <div id="cluster-map" class="mb-4"></div>
+
+            <!-- Heading + button -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="fw-bold text-white">All Campgrounds</h1>
+                <a href="/campgrounds/new" class="btn btn-add-campground">+ Add Campground</a>
+            </div>
+
+            <!-- Cards -->
+            <% for (let campground of campgrounds) { %>
+                <div class="card mb-4 campground-card shadow">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <% if (campground.images.length) { %>
+                                <img src="<%= campground.images[0].url %>" class="img-fluid w-100 h-100 obj-cover"
+                                    alt="">
+                                <% } else { %>
+                                    <img src="https://res.cloudinary.com/dcbthvnv4/image/upload/v1759000699/YelpCamp/fonagaz0hdjecpohneeu.jpg"
+                                        class="img-fluid w-100 h-100 obj-cover" alt="">
+                                    <% } %>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">
+                                    <%= campground.title %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= campground.description %>
+                                </p>
+                                <p class="card-text"><small class="text-muted">
+                                        <%= campground.location %>
+                                    </small></p>
+                                <a href="/campgrounds/<%= campground._id %>" class="btn btn-view">View Details</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    <% }%>
+                <% } %>
 
-    <script>
-        const mapToken = '<%- mapboxToken %>';
-        const campgrounds = {features: <%- JSON.stringify(campgrounds) %>};
-    </script>
-    <script src="/javascripts/clusterMap.js"></script>
+
+                    <% if (page && totalPages) { %>
+                        <% const maxPagesToShow=7; let startPage=Math.max(1, page - Math.floor(maxPagesToShow / 2)); let
+                            endPage=Math.min(totalPages, startPage + maxPagesToShow - 1); if (endPage - startPage <
+                            maxPagesToShow - 1) { startPage=Math.max(1, endPage - maxPagesToShow + 1); } %>
+
+                            <div class="pagination d-flex justify-content-center mt-4">
+                                <ul class="pagination">
+
+                                    <% if (page> 1) { %>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=<%= page - 1 %>">Previous</a>
+                                        </li>
+                                        <% } %>
+
+                                            <% if (startPage> 1) { %>
+                                                <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                                                <% if (startPage> 2) { %>
+                                                    <li class="page-item disabled"><span class="page-link">…</span></li>
+                                                    <% } %>
+                                                        <% } %>
+
+                                                            <% for (let i=startPage; i <=endPage; i++) { %>
+                                                                <li class="page-item <%= page === i ? 'active' : '' %>">
+                                                                    <a class="page-link" href="?page=<%= i %>">
+                                                                        <%= i %>
+                                                                    </a>
+                                                                </li>
+                                                                <% } %>
+
+                                                                    <% if (endPage < totalPages) { %>
+                                                                        <% if (endPage < totalPages - 1) { %>
+                                                                            <li class="page-item disabled"><span
+                                                                                    class="page-link">…</span></li>
+                                                                            <% } %>
+                                                                                <li class="page-item"><a
+                                                                                        class="page-link"
+                                                                                        href="?page=<%= totalPages %>">
+                                                                                        <%= totalPages %>
+                                                                                    </a></li>
+                                                                                <% } %>
+
+                                                                                    <% if (page < totalPages) { %>
+                                                                                        <li class="page-item">
+                                                                                            <a class="page-link"
+                                                                                                href="?page=<%= page + 1 %>">Next</a>
+                                                                                        </li>
+                                                                                        <% } %>
+
+                                </ul>
+                            </div>
+                            <% } %>
+
+
+                                <script>
+                                    const mapToken = '<%- mapboxToken %>';
+                                    const campgrounds = { features: <%- JSON.stringify(campgrounds) %> };
+                                </script>
+                                <script src="/javascripts/clusterMap.js"></script>

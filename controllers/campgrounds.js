@@ -3,14 +3,36 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({accessToken: mapBoxToken});
 const { cloudinary } = require('../cloudinary');
+const mongoose = require('mongoose')
 
-module.exports.index = async(req, res) =>{
-    const campgrounds = await Campground.find({});
-    res.render('campgrounds/index', {campgrounds,mapboxToken: process.env.MAPBOX_TOKEN_CLIENT})
-}
+module.exports.index = async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 12; 
+    const skip = (page - 1) * limit;
+
+    const campgrounds = await Campground.find({})
+        .skip(skip)
+        .limit(limit);
+
+    const total = await Campground.countDocuments();
+
+    res.render('campgrounds/index', {
+        campgrounds,
+        mapboxToken: process.env.MAPBOX_TOKEN_CLIENT,
+        activePage: 'campgrounds',
+        bodyClass: 'campgrounds-page', 
+        page,
+        total,
+        limit,
+        totalPages: Math.ceil(total / limit)
+    });
+};
 
 module.exports.renderNewForm = (req,res) =>{
-    res.render('campgrounds/new');
+    res.render('campgrounds/new', { 
+        activePage: 'campgrounds',
+        bodyClass: 'add-page'
+    });
 }
 
 module.exports.createCampground = async(req, res) => {
@@ -29,8 +51,14 @@ module.exports.createCampground = async(req, res) => {
 }
 
 module.exports.showCampground = async(req,res) =>{
+    const { id } = req.params;
+
     // populates both reviews and author of each review
-    const campground = await Campground.findById(req.params.id).populate({
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        req.flash('error', 'Invalid Campground ID!');
+        return res.redirect('/campgrounds');
+    }
+    const campground = await Campground.findById(id).populate({
         path: 'reviews',
         populate: {
             path: 'author'
@@ -40,7 +68,12 @@ module.exports.showCampground = async(req,res) =>{
         req.flash('error', 'Cannot find that campground!');
         return res.redirect('/campgrounds');
     }
-    res.render('campgrounds/show', {campground, mapboxToken: process.env.MAPBOX_TOKEN_CLIENT});
+    res.render('campgrounds/show', {
+        campground, 
+        mapboxToken: process.env.MAPBOX_TOKEN_CLIENT, 
+        activePage: 'campgrounds',
+        bodyClass: 'campgrounds-page show-page'
+    });
 }
 
 module.exports.renderEditForm = async(req,res) => {
@@ -50,7 +83,11 @@ module.exports.renderEditForm = async(req,res) => {
         req.flash('error', 'Cannot find that campground!');
         return res.redirect('/campgrounds');
     }
-    res.render('campgrounds/edit', {campground});
+    res.render('campgrounds/edit', {
+        campground, 
+        activePage: 'campgrounds',
+        bodyClass: 'campgrounds-page edit-page'
+    });
 }
 
 module.exports.updateCampground = async (req, res) =>{
