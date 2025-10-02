@@ -8,5 +8,10 @@
   <p class="lead mb-4">
     <%= err.message %>
   </p>
+  <% if (process.env.NODE_ENV !== "production") { %>
+  <p class="lead mb-4">
+    <%= err.stack %>
+  </p>
+  <% } %>>
   <a href="/campgrounds" class="btn btn-view">← Back to All Campgrounds</a>
 </div>
