@@ -5,7 +5,7 @@ const map = new mapboxgl.Map({
     config: {
         basemap: {
             theme: 'monochrome',
-            lightPreset: 'light'
+            lightPreset: 'night'
         }
     },
     center: campground.geometry.coordinates, 
