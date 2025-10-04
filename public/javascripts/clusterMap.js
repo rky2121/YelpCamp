@@ -6,7 +6,7 @@
         config: {
             basemap: {
                 theme: 'monochrome',
-                lightPreset: 'light'
+                lightPreset: 'night'
             }
         },
         center: [-103.5917, 40.6699],
