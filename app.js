@@ -83,6 +83,7 @@ const scriptSrcUrls = [
   "https://cdnjs.cloudflare.com/",
   "https://cdn.jsdelivr.net/",
 ];
+
 const styleSrcUrls = [
   "https://stackpath.bootstrapcdn.com/",
   "https://api.mapbox.com/",
@@ -92,40 +93,43 @@ const styleSrcUrls = [
   "https://use.fontawesome.com/",
   "https://kit-free.fontawesome.com/",
 ];
+
 const connectSrcUrls = [
   "https://api.mapbox.com/",
   "https://a.tiles.mapbox.com/",
   "https://b.tiles.mapbox.com/",
   "https://c.tiles.mapbox.com/",
   "https://d.tiles.mapbox.com/",
+  "https://tile.mapbox.com/",       
+  "https://cdn.mapbox.com/",       
   "https://events.mapbox.com/",
 ];
+
 const fontSrcUrls = [
   "https://fonts.googleapis.com/",
   "https://fonts.gstatic.com/",
 ];
 
 app.use(
-    helmet.contentSecurityPolicy({
-        directives: {
-            defaultSrc: [],
-            connectSrc: ["'self'", ...connectSrcUrls],
-            scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
-            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
-            workerSrc: ["'self'", "blob:"],
-            objectSrc: [],
-            imgSrc: [
-                "'self'",
-                "blob:",
-                "data:",
-                "https://res.cloudinary.com/dcbthvnv4/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
-                "https://images.unsplash.com/",
-            ],
-            fontSrc: ["'self'", ...fontSrcUrls],
-        },
-    })
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: [],
+      connectSrc: ["'self'", ...connectSrcUrls],
+      scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+      styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+      workerSrc: ["'self'", "blob:"],
+      objectSrc: [],
+      imgSrc: [
+        "'self'",
+        "blob:",
+        "data:",
+        "https://res.cloudinary.com/dcbthvnv4/", 
+        "https://images.unsplash.com/",
+      ],
+      fontSrc: ["'self'", ...fontSrcUrls],
+    },
+  })
 );
-
 
 app.use(passport.initialize());
 app.use(passport.session());
